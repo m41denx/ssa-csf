@@ -190,7 +190,7 @@ const IndexPage = (props) => {
     <div className="h-screen flex flex-col">
       <div className="flex items-center justify-center flex-col flex-1 gap-4">
         <img src={Logo.src} className="h-40"/>
-        <p className="text-blue-vsu text-2xl font-bold max-w-3xl">Добро пожаловать в Студенческое Научное Объединение
+        <p className="text-blue-vsu text-2xl font-bold max-w-3xl text-center">Добро пожаловать в Студенческое Научное Объединение
           ВГУ!</p>
         <p className="text-blue-vsu text-xl max-w-3xl text-center">Здесь не только наука, но и возможность развивать
           soft skills в команде. Прокачайте навыки в продвижении, переговорах, публичных выступлениях и управлении
@@ -227,11 +227,11 @@ const IndexPage = (props) => {
       </div>
       <div className="flex flex-col items-center gap-8">
         <p className="text-blue-vsu text-xl font-bold">Организаторы</p>
-        <div className="flex gap-2 items-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 items-center">
           {orgs.map((o, i) => {
             return <div className="flex flex-col items-center" key={i}>
-              <img src={o.ava} className="rounded-full w-24"/>
-              <p className="text-blue-vsu text-lg">{o.name}</p>
+              <img src={o.ava} className="rounded-full w-20 lg:w-24"/>
+              <p className="text-blue-vsu text-lg text-nowrap">{o.name}</p>
               <span>{o.position}</span>
             </div>
           })}
