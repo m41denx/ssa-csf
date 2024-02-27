@@ -157,7 +157,7 @@ const IndexPage = (props) => {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
       {faculties.map((fac,i)=>{
         const cover = props.vk[fac.id]?.cover||Cover.src
-        return <div className="rounded-xl flex flex-col bg-slate-100 p-4 gap-4 drop-shadow-lg">
+        return <div key={i} className="rounded-xl flex flex-col bg-slate-100 p-4 gap-4 drop-shadow-lg">
           <img src={cover} className="h-40 object-cover rounded-lg"/>
           <div className="flex items-center gap-4">
             <img src={props.vk[fac.id]?.photo || fac.img} className="h-16 rounded-full"/>
