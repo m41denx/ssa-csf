@@ -118,7 +118,7 @@ const IndexPage = (props) => {
         <p className="text-blue-vsu text-xl font-bold">Организаторы</p>
         <div className="flex gap-2 items-center">
           {orgs.map((o,i)=>{
-            return <div className="flex flex-col items-center">
+            return <div className="flex flex-col items-center" key={i}>
               <img src={o.ava} className="rounded-full w-24"/>
               <p className="text-blue-vsu text-lg">{o.name}</p>
               <span>{o.position}</span>
