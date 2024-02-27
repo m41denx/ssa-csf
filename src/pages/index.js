@@ -71,19 +71,107 @@ const orgs = [
 ]
 
 const getStaticProps = async (ctx) => {
-  const token = "vk1.a.ZTEBIolr38IunV67QLVa8gWBjrnkXxwP_t2BYv3fgM67Xr1OXHZkUjDppmv1noGNCtUGa3J8sXJktJUYUV45teLatBUQHmdAP84ZTfI5Sy5epz3wcJBkHPm4hyskwMhXjMTdqE2NeIhfM-UbyjwgHWT_UCDi7vaOq4bnoyTRNooqdqFzE-eG4hsu0SfwVL7Ghy-Bo-dVYPZWX9gib3uzEA"
-  const ids = faculties.reduce((s,e)=>s+e.id+",", "").slice(0, -1)
-  const res = await fetch(`https://api.vk.com/method/groups.getById?fields=cover&access_token=${token}&v=5.199&group_ids=${ids}`).then(r=>r.json())
-  const groups = res?.response?.groups||[]
+  // const token = "vk1.a.ZTEBIolr38IunV67QLVa8gWBjrnkXxwP_t2BYv3fgM67Xr1OXHZkUjDppmv1noGNCtUGa3J8sXJktJUYUV45teLatBUQHmdAP84ZTfI5Sy5epz3wcJBkHPm4hyskwMhXjMTdqE2NeIhfM-UbyjwgHWT_UCDi7vaOq4bnoyTRNooqdqFzE-eG4hsu0SfwVL7Ghy-Bo-dVYPZWX9gib3uzEA"
+  // const ids = faculties.reduce((s,e)=>s+e.id+",", "").slice(0, -1)
+  // const res = await fetch(`https://api.vk.com/method/groups.getById?fields=cover&access_token=${token}&v=5.199&group_ids=${ids}`).then(r=>r.json())
+  // const groups = res?.response?.groups||[]
+  //
+  // const gdata = {}
+  // groups.forEach((gr,i)=>{
+  //   gdata[gr.id] = {
+  //     photo: gr.photo_200||gr.photo_100,
+  //     name: gr.name,
+  //     cover: gr.cover?.enabled?gr.cover.images[gr.cover.images.length-1].url:false
+  //   }
+  // })
 
-  const gdata = {}
-  groups.forEach((gr,i)=>{
-    gdata[gr.id] = {
-      photo: gr.photo_200||gr.photo_100,
-      name: gr.name,
-      cover: gr.cover?.enabled?gr.cover.images[gr.cover.images.length-1].url:false
-    }
-  })
+  const gdata = {
+    "16158946": {
+      "photo": "https://sun130-1.userapi.com/s/v1/ig2/0oAuoYcF4YaEb6qvxpl3juzncsvgOwlsgjn816oGUF7lhbIT9WhXTVy76pVgRRGVqtKGopRsWZtcK0jrc1W8YKAM.jpg?size=200x200&quality=95&crop=327,1000,206,206&ava=1",
+      "name": "Студенческое научное общество юрфака ВГУ",
+      "cover": "https://sun9-77.userapi.com/impf/lcCLTNpnnz875pJrsC_HSiw1oDTp5h-nzfufkg/JrnMhFWQ1Qo.jpg?size=1818x606&quality=95&crop=0,0,1196,398&sign=800993935e3aa69e4556716b089e0a99&c_uniq_tag=vubRUIMywKgjcMEg9Kz51qVXj98eJ463Mk5bh5xdsek&type=cover_group"
+    },
+    "183751330": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/LtfSbsqakbSPf0VJ3mvQt7lGvqH-UB8HbEU4eAOTRBiwS9SYmtYHcV4R50K457F5-NWLyLW6ffPkaT3oB67klVbx.jpg?size=200x200&quality=95&crop=115,98,1110,1110&ava=1",
+      "name": "СНО ФМО ВГУ l Евразийский клуб",
+      "cover": "https://sun9-35.userapi.com/impf/XTpWJquuBrigku7RILPMJTBN0C3I2uvJlonTKA/awfI5iBoMFQ.jpg?size=1920x768&quality=95&crop=39,15,1841,735&sign=1ed50a0aead4aa183fd2cd4956b9661d&c_uniq_tag=Nfi-b8nQ2k45LAsja2K_dUeHU3gJZPbstDbphlfd2Ag&type=cover_group"
+    },
+    "209474091": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/7fGrRu9V2ung7Iq6UOUbfWTInhnXdWyl_y0qKPt1T9UJAknl1b8elZ-cQGP6CIQ55jmXvPabM-5ndZnpIEGF92xd.jpg?size=200x200&quality=95&crop=0,0,500,500&ava=1",
+      "name": "СНО ХИМФАК ВГУ",
+      "cover": "https://sun9-37.userapi.com/impf/nSrwPvM3e2jWN3XwVSQG1moTp2vxCfYJ5AoEcQ/rhA-xXCV9Ro.jpg?size=1818x606&quality=95&crop=0,0,1590,530&sign=bdc2ff2fb395d75466b01a7b1e310947&c_uniq_tag=iNEmUQJmvOj2DX6Rs1AjGor4ZLXBiSiG3memMuHImR0&type=cover_group"
+    },
+    "209709246": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/WIgM2ATYBfN2yr5lc2H8CmahKtv45AImn8LLZMNje0E8Cb-MEcdqq07Eho6TllcEEtBIAN3-QppilK5FSL2xsiaf.jpg?size=200x200&quality=95&crop=104,115,864,864&ava=1",
+      "name": "Студенческое научное объединение геолфака ВГУ",
+      "cover": "https://sun9-78.userapi.com/impf/_WTzwMSIp6VQuMlhzs2Dk-Gm1_ShpGYbBhmZ2g/1aKQNzRPIgU.jpg?size=1920x768&quality=95&crop=0,0,1600,639&sign=7b5c77e38eb8dbf9e37b36e6fa882b96&c_uniq_tag=JBXEXj51Wv2Wg_j1-qHWSvuO08s7338DCwLEdpw89Lk&type=cover_group"
+    },
+    "209834276": {
+      "photo": "https://sun130-1.userapi.com/s/v1/ig2/x75U0D1KgFFgsaiYY4-2POynQkUdPbFzFO1m0w5MQrHqttIeka8GdiqerbTCewiGIyfZT64yzus81G9dByc7GRzl.jpg?size=200x200&quality=95&crop=30,0,540,540&ava=1",
+      "name": "СНО математического факультета ВГУ",
+      "cover": false
+    },
+    "210445864": {
+      "photo": "https://sun130-1.userapi.com/s/v1/ig2/opbLpmPzrEnmdpGCoSz4kX01bTCVIp2OtwgMDNgwyr1HutSwsMLdq-glQGhA20Z_79I1t1nZJwzDez_N-t7eO_vU.jpg?size=200x200&quality=95&crop=0,0,1080,1080&ava=1",
+      "name": "СНО ГГиТ ВГУ",
+      "cover": "https://sun9-73.userapi.com/impf/rs3ALG7MlccDKM-9hjWraQnJq2dkDvnOBKRXxQ/F1G3r3k5kO4.jpg?size=1920x768&quality=95&crop=88,0,1769,706&sign=a01804adb5e469959a04562732616b87&c_uniq_tag=idRebTEjRK03UNkycOCh8QBmtbOv1n-3NnszgHxn2tM&type=cover_group"
+    },
+    "210459813": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/lX1c61u43PYYjBbnK35q3RiD0AmyCx2rhIcwbGNOlF6OiyZOmzmcQr1RMXcwOpANB8nwcxCBm5R0FXmAONkjy8tH.jpg?size=200x200&quality=95&crop=82,73,585,585&ava=1",
+      "name": "СНО ФизФак ВГУ",
+      "cover": false
+    },
+    "210543832": {
+      "photo": "https://sun130-1.userapi.com/s/v1/ig2/M6D3qwDWVbW80_Wr9pPcmHtulFELAF3gijLLVZtCbf2GWITyvJRP7jRs7uWFRcTuk1ESvnkKrUz9bVrzFHUxfY-C.jpg?size=200x200&quality=95&crop=198,198,1596,1596&ava=1",
+      "name": "Студенческое научное объединение ФКН",
+      "cover": "https://sun9-33.userapi.com/impf/feKUrfwYbCUWDmEpUvu2Bgx01piXdq9JWiB_Zw/nKg-ouB_fOM.jpg?size=1818x606&quality=95&crop=0,0,1590,530&sign=c82873afbe8d9ab6b3273509d6d563d8&c_uniq_tag=rFa848wa_cggUmA76qCPRixe1xhA5oVTDF0OT_fGzEQ&type=cover_group"
+    },
+    "210569662": {
+      "photo": "https://sun130-1.userapi.com/s/v1/ig2/PIwnuBnbgaYIveRn9c2pk4FRdCuplQzDRiMuMt3YMzgI0ylTSszCsF25vX6e7vI8ac2pSZf7JVGH060KaluiUS5q.jpg?size=200x200&quality=95&crop=100,100,800,800&ava=1",
+      "name": "СНО исторического факультета | ВГУ",
+      "cover": "https://sun9-79.userapi.com/_788cQTmqO2K8-bsRTNEhZH8zl_RHIzwf6VfLA/jluLGx7J5YA.jpg"
+    },
+    "210663214": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/Isbbuu1INVKsLbOs5-2Q8lK6dApMIkGm3N7M3sPiLGnXVz3BZy7Dxv4tbiJUO5-Sd9BpjyIgZbjIoYPZoZnbJ-YX.jpg?size=200x200&quality=95&crop=0,0,2560,2560&ava=1",
+      "name": "СНО ПММ",
+      "cover": "https://sun9-54.userapi.com/keNIouaXsYkWEUDxsUnhlgdLButyRjFbIMsnTw/QQvZLWdcaco.jpg"
+    },
+    "210679147": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/nqWBeqmfbVA-gaMOzBMihUdv3pKaufqAx6agSuqasvZtNJBJEv2DAwrNbQLv5NZS__i8ivUVcGzk8v-7W-uYCMh3.jpg?size=200x200&quality=95&crop=116,152,720,720&ava=1",
+      "name": "СНО МБФ ВГУ",
+      "cover": "https://sun9-57.userapi.com/impf/k4JDPA_CfvNoGvycn7-DSE3cJ9WyjpQCC3QiOg/C4e2eOR0UBs.jpg?size=1920x768&quality=95&crop=0,0,1920,767&sign=f9f85e1936a73fba4720f37ec54d8bfe&c_uniq_tag=0dg8L3BgPkBGKzvuaA5IvLvQmJr5Tng4vQLPlF8fToo&type=cover_group"
+    },
+    "210972608": {
+      "photo": "https://sun130-1.userapi.com/s/v1/ig2/vw8M_G2-E9RlFXXa9rBWIaE7VufhHAcmxOTZcik-8lb0btZBJ9VcEd6M0yWi9H6IJRtOxy34a_aIYT6pRzS1vly6.jpg?size=200x200&quality=95&crop=90,41,1417,1417&ava=1",
+      "name": "СНО ЖУРФАК ВГУ",
+      "cover": "https://sun9-58.userapi.com/impf/8rPpd4lWncjLlpUiQUaa4CW50006fbkvJxADCw/GtJ2xGStPow.jpg?size=1818x606&quality=95&crop=14,0,1560,520&sign=ef838021a3af19a0329f29f42ff045ab&c_uniq_tag=XmS5_Pw2Ly24uQtE_ccIoHOOt4VbfROKvZAUCU50bzE&type=cover_group"
+    },
+    "211471229": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/hNjHGi5SVuQc3JL5d2ydQPnMhWq-WPYdDEydatnfQGw1W8JqdS9qXG51CkODiFyg8UAYGUOQlKyipCMI-TIinPhH.jpg?size=200x200&quality=95&crop=50,49,400,400&ava=1",
+      "name": "СНО Факультета Философии и Психологии ВГУ",
+      "cover": "https://sun9-54.userapi.com/impf/qi6MpAep7NoidfehJzAqUij7ztgLfeamii0f5A/UjWqsfIDoVs.jpg?size=1818x606&quality=95&crop=0,200,1920,640&sign=fe674165f1b21cbaa3c2aa06ffc930c2&c_uniq_tag=M776yhke5eak6vxCXGNLvTx11XW-WFxnqT0LWNofSnM&type=cover_group"
+    },
+    "219746857": {
+      "photo": "https://sun130-1.userapi.com/s/v1/ig2/0h3duxQcjarPhjxuCQ-Ozh0xS5Iu1G9hqGYofkqSMf6Y4f5Pf6UF4icyKRoJIncO5BvqkNvRvsvl4_FwM4X9QXC3.jpg?size=200x200&quality=95&crop=40,36,2492,2492&ava=1",
+      "name": "СНО филологического факультета ВГУ",
+      "cover": "https://sun9-20.userapi.com/impf/UXcDjVlRp323p_hzGqOStu6IBvcC6NPSIuJ3OA/_C8ECJCzC2U.jpg?size=1920x768&quality=95&crop=0,0,2087,834&sign=7d19e896631206493197cbfcedf3557e&c_uniq_tag=mD75Wk_BKBVbKezhu0_uKLmXbEi_fDccRtL8n_Adv2U&type=cover_group"
+    },
+    "222558254": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/ka9HNE6BaaeXjBKZKto0chTj2-lUCXPIquBhGRwrx_D21uG2ejUxYD9KhD4btLph6YgCOEtsrWs9xPXCmNaZ92-o.jpg?size=200x200&quality=95&crop=0,0,2048,2048&ava=1",
+      "name": "СНО • «СОЮЗ» • РГФ",
+      "cover": "https://sun9-41.userapi.com/impf/UongJsiI0K2uLr7p4EAJsMjRWRXUuLaw0ZwLow/xv2NnzUkF6s.jpg?size=1920x768&quality=95&crop=0,0,1919,766&sign=8d03e945a0c33720a5c8f89f308e93a3&c_uniq_tag=9fKgH0YgQaHkCIBa89OmWvxoSSBhL9PGD6My_obWXSA&type=cover_group"
+    },
+    "222719412": {
+      "photo": "https://sun130-2.userapi.com/s/v1/ig2/mr6vdE2aeSW4Qe_HjSBaxRVa2m-JXGkrTDby7hT749PgXKtJayre5Y1r_8ZIfpDoBZr31ay3dAjIAXjQH2zCWTwF.jpg?size=200x200&quality=95&crop=0,4,1276,1276&ava=1",
+      "name": "СНО ЭКОНОМИКА ВГУ",
+      "cover": "https://sun9-36.userapi.com/impf/zGtbq2HEP1QnG2QNRonJuIX6Hxz1A1_Brp8v6A/wB0LhupJP5Y.jpg?size=1920x768&quality=95&crop=0,5,2340,934&sign=fa7f3d99cd08376fdc2a8d098a2e7cd2&c_uniq_tag=O8CIzlI7I1GPp9ibY9NINJBsGhbQuH8DU81J7kPIWB8&type=cover_group"
+    },
+    "223707650": {
+      "photo": "https://sun130-1.userapi.com/s/v1/ig2/EeuNEW2aQ4jLii8RUrXI8U6mMAx_xhXcm5uP-bZOq5VKGjaktieVYmEcbnWp3N_R1vVzDoyQRNB-elCcvPBZJaco.jpg?size=200x200&quality=95&crop=5,0,2158,2158&ava=1",
+      "name": "СНО ФАРМФАК ВГУ",
+      "cover": false
+    },
+  }
   return {
     props: {
       vk: gdata
@@ -95,8 +183,6 @@ const getStaticProps = async (ctx) => {
 const IndexPage = (props) => {
   const sts = (typeof window !== 'undefined'?window.innerWidth:200) / 200
 
-
-  console.log(props.vk)
 
   return <>
     <NavBar/>
