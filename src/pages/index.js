@@ -198,7 +198,7 @@ const IndexPage = (props) => {
       </div>
       <div className="py-4">
         <p className="text-3xl font-bold text-blue-vsu text-center mb-6">Наши СНО</p>
-        <Slider accessibility={false} dots={false} infinite slidesToShow={sts} slidesToScroll={1} autoplay speed={5000}
+        <Slider arrows={false} accessibility={false} dots={false} infinite slidesToShow={sts} slidesToScroll={1} autoplay speed={5000}
                 autoplaySpeed={0} cssEase="linear">
           {faculties.map((fac, i) => {
             return <Link key={i} href={fac.link} className="flex flex-col justify-center items-center gap-4 px-8">
