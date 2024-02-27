@@ -247,7 +247,7 @@ const IndexPage = (props) => {
           <img src={cover} className="h-40 object-cover rounded-lg"/>
           <div className="flex items-center gap-4">
             <img src={props.vk[fac.id]?.photo || fac.img} className="h-16 rounded-full"/>
-            <p className="text-lg font-bold text-blue-vsu">{props.vk[fac.id]?.name} {fac.id}</p>
+            <p className="text-lg font-bold text-blue-vsu">{props.vk[fac.id]?.name}</p>
           </div>
           <p className="text-blue-vsu">{fac.name.replace("?", " Факультет ")}</p>
           <div className="flex justify-end">
