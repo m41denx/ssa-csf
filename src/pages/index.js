@@ -192,7 +192,7 @@ const IndexPage = (props) => {
         <img src={Logo.src} className="h-40"/>
         <p className="text-blue-vsu text-2xl font-bold max-w-3xl text-center">Добро пожаловать в Студенческое Научное Объединение
           ВГУ!</p>
-        <p className="text-blue-vsu text-xl max-w-3xl text-center">Здесь не только наука, но и возможность развивать
+        <p className="text-blue-vsu text-md lg:text-xl max-w-3xl text-center">Здесь не только наука, но и возможность развивать
           soft skills в команде. Прокачайте навыки в продвижении, переговорах, публичных выступлениях и управлении
           проектами. Присоединяйтесь к нам и станьте частью увлекательного научного путешествия!</p>
       </div>
