@@ -202,7 +202,7 @@ const IndexPage = (props) => {
                 autoplaySpeed={0} cssEase="linear">
           {faculties.map((fac, i) => {
             return <Link key={i} href={fac.link} className="flex flex-col justify-center items-center gap-4 px-8">
-              <img src={fac.img} className="h-20 grayscale hover:grayscale-0 transition-all duration-500"
+              <img src={fac.img} className="h-12 lg:h-20 grayscale hover:grayscale-0 transition-all duration-500"
                    alt={fac.name.replace("?", " Факультет ")}/>
             </Link>
           })}
