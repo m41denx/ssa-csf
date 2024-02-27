@@ -27,25 +27,24 @@ import Cover from "@/assets/cover.jpg"
 import {Button} from "antd";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faVk} from "@fortawesome/free-brands-svg-icons";
-
 const faculties = [
-  {img: CS.src, name: "?компьютерных наук", link: "https://vk.com/ssa_csf"},
-  {img: Chem.src, name: "Химический?", link: "https://vk.com/sno_chem"},
-  {img: Math.src, name: "Математический?", link: "https://vk.com/sno_math"},
-  {img: Geol.src, name: "Геологический?", link: "https://vk.com/geosno"},
-  {img: Hist.src, name: "Исторический?", link: "https://vk.com/histvsu"},
-  {img: Jour.src, name: "?журналистики", link: "https://vk.com/public210972608"},
-  {img: Pmm.src, name: "?прикладной математики, информатики и механики", link: "https://vk.com/sciamm"},
-  {img: Phipsy.src, name: "?Философии и психологии", link: "https://vk.com/sno_fipsi"},
-  {img: Phys.src, name: "Физический?", link: "https://vk.com/snovsuphys"},
-  {img: Law.src, name: "Юридический?", link: "https://vk.com/law_ssc"},
-  {img: Econom.src, name: "Экономический?", link: "https://vk.com/public222719412"},
-  {img: FMO.src, name: "?международных отношений", link: "https://vk.com/eurasianclubvsu"},
-  {img: Ggit.src, name: "?географии, геоэкологии и туризма", link: "https://vk.com/sno_ggit"},
-  {img: MBF.src, name: "Медико-биологический?", link: "https://vk.com/sno_mbf"},
-  {img: RGPH.src, name: "?Романо-германской филологии", link: "https://vk.com/science_rgph_vsu"},
-  {img: Phil.src, name: "Филологический?", link: "https://vk.com/sno_phil_vsu"},
-  {img: Pharm.src, name: "Фармацевтический?", link: "https://vk.com/sno_farm"},
+  {img: CS.src, name: "?компьютерных наук", link: "https://vk.com/ssa_csf", id:"210543832"},
+  {img: Chem.src, name: "Химический?", link: "https://vk.com/sno_chem", id:"209474091"},
+  {img: Math.src, name: "Математический?", link: "https://vk.com/sno_math", id:"209834276"},
+  {img: Geol.src, name: "Геологический?", link: "https://vk.com/geosno", id:"209709246"},
+  {img: Hist.src, name: "Исторический?", link: "https://vk.com/histvsu", id:"210569662"},
+  {img: Jour.src, name: "?журналистики", link: "https://vk.com/public210972608", id:"210972608"},
+  {img: Pmm.src, name: "?прикладной математики, информатики и механики", link: "https://vk.com/sciamm", id:"210663214"},
+  {img: Phipsy.src, name: "?Философии и психологии", link: "https://vk.com/sno_fipsi", id:"211471229"},
+  {img: Phys.src, name: "Физический?", link: "https://vk.com/snovsuphys", id:"210459813"},
+  {img: Law.src, name: "Юридический?", link: "https://vk.com/law_ssc", id:"16158946"},
+  {img: Econom.src, name: "Экономический?", link: "https://vk.com/public222719412", id:"222719412"},
+  {img: FMO.src, name: "?международных отношений", link: "https://vk.com/eurasianclubvsu", id:"183751330"},
+  {img: Ggit.src, name: "?географии, геоэкологии и туризма", link: "https://vk.com/sno_ggit", id:"210445864"},
+  {img: MBF.src, name: "Медико-биологический?", link: "https://vk.com/sno_mbf", id:"210679147"},
+  {img: RGPH.src, name: "?Романо-германской филологии", link: "https://vk.com/science_rgph_vsu", id:"222558254"},
+  {img: Phil.src, name: "Филологический?", link: "https://vk.com/sno_phil_vsu", id:"219746857"},
+  {img: Pharm.src, name: "Фармацевтический?", link: "https://vk.com/sno_farm", id:"223707650"},
 ]
 
 const orgs = [
@@ -71,8 +70,33 @@ const orgs = [
   }
 ]
 
+const getStaticProps = async (ctx) => {
+  const token = "vk1.a.ZTEBIolr38IunV67QLVa8gWBjrnkXxwP_t2BYv3fgM67Xr1OXHZkUjDppmv1noGNCtUGa3J8sXJktJUYUV45teLatBUQHmdAP84ZTfI5Sy5epz3wcJBkHPm4hyskwMhXjMTdqE2NeIhfM-UbyjwgHWT_UCDi7vaOq4bnoyTRNooqdqFzE-eG4hsu0SfwVL7Ghy-Bo-dVYPZWX9gib3uzEA"
+  const ids = faculties.reduce((s,e)=>s+e.id+",", "").slice(0, -1)
+  const res = await fetch(`https://api.vk.com/method/groups.getById?fields=cover&access_token=${token}&v=5.199&group_ids=${ids}`).then(r=>r.json())
+  const groups = res?.response?.groups||[]
+
+  const gdata = {}
+  groups.forEach((gr,i)=>{
+    gdata[gr.id] = {
+      photo: gr.photo_200||gr.photo_100,
+      name: gr.name,
+      cover: gr.cover?.enabled?gr.cover.images[gr.cover.images.length-1].url:false
+    }
+  })
+  return {
+    props: {
+      vk: gdata
+    },
+    revalidate: 3600
+  }
+}
+
 const IndexPage = (props) => {
   const sts = (typeof window !== 'undefined'?window.innerWidth:200) / 200
+
+
+  console.log(props.vk)
 
   return <>
     <NavBar/>
@@ -105,7 +129,8 @@ const IndexPage = (props) => {
         <div className="relative">
           <img src={Cover.src} className="rounded-lg"/>
           <Link href="https://vk.com/snovsu" legacyBehavior>
-            <Button type="primary" className="w-fit gap-2 flex items-center absolute bottom-1 right-1 drop-shadow-md z-10">
+            <Button type="primary"
+                    className="w-fit gap-2 flex items-center absolute bottom-1 right-1 drop-shadow-md z-10">
               <FontAwesomeIcon icon={faVk}/> ВКонтакте
             </Button>
           </Link>
@@ -117,7 +142,7 @@ const IndexPage = (props) => {
       <div className="flex flex-col items-center gap-8">
         <p className="text-blue-vsu text-xl font-bold">Организаторы</p>
         <div className="flex gap-2 items-center">
-          {orgs.map((o,i)=>{
+          {orgs.map((o, i) => {
             return <div className="flex flex-col items-center" key={i}>
               <img src={o.ava} className="rounded-full w-24"/>
               <p className="text-blue-vsu text-lg">{o.name}</p>
@@ -127,7 +152,30 @@ const IndexPage = (props) => {
         </div>
       </div>
     </div>
+
+    <p className="text-3xl font-bold text-blue-vsu text-center mb-6 mt-16" id="snos">Подробнее о наших СНО</p>
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+      {faculties.map((fac,i)=>{
+        const cover = props.vk[fac.id]?.cover||Cover.src
+        return <div className="rounded-xl flex flex-col bg-slate-100 p-4 gap-4 drop-shadow-lg">
+          <img src={cover} className="h-40 object-cover rounded-lg"/>
+          <div className="flex items-center gap-4">
+            <img src={props.vk[fac.id]?.photo || fac.img} className="h-16 rounded-full"/>
+            <p className="text-lg font-bold text-blue-vsu">{props.vk[fac.id]?.name} {fac.id}</p>
+          </div>
+          <p className="text-blue-vsu">{fac.name.replace("?", " Факультет ")}</p>
+          <div className="flex justify-end">
+            <Link href={fac.link} legacyBehavior>
+              <Button type="primary" className="gap-2 flex items-center drop-shadow-md">
+                <FontAwesomeIcon icon={faVk}/> ВКонтакте
+              </Button>
+            </Link>
+          </div>
+        </div>
+      })}
+    </div>
   </>
 }
 
 export default IndexPage
+export {getStaticProps}
