@@ -23,6 +23,11 @@ import Pmm from "@/assets/faculties/pmm.png"
 import RGPH from "@/assets/faculties/rgph.png"
 import Link from "next/link";
 
+import Cover from "@/assets/cover.jpg"
+import {Button} from "antd";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faVk} from "@fortawesome/free-brands-svg-icons";
+
 const faculties = [
   {img: CS.src, name: "?компьютерных наук", link: "https://vk.com/ssa_csf"},
   {img: Chem.src, name: "Химический?", link: "https://vk.com/sno_chem"},
@@ -43,9 +48,35 @@ const faculties = [
   {img: Pharm.src, name: "Фармацевтический?", link: "https://vk.com/sno_farm"},
 ]
 
+const orgs = [
+  {
+    ava:"https://sun130-2.userapi.com/s/v1/if2/1_QPl7gUYeAXgJS66jBBmSDWbZdVUwryBoWwpBxdVsb7s0WTsnWMlOn8mNFfpd96KQ-HPTUSHxHCPh8NIv5VBzRJ.jpg?quality=95&crop=268,531,1331,1331&as=50x50,100x100,200x200,400x400&ava=1&u=8PjoiJPSlwe-sMUzhZ7OG6clRrq-MbDYHdynufC-fYQ&cs=200x200",
+    name: "Анастасия Лучкова",
+    position: "Председатель"
+  },
+  {
+    ava:"https://sun130-1.userapi.com/s/v1/if2/5Hrwcf9VkOHwo8hyF3zh6DtZJWS5ZNjIfKOhM7teKqjd5vSeVcZpXxHU6a7-G35gri3fJwXTEqS4piZRaGwx4XHW.jpg?quality=95&crop=40,258,631,631&as=50x50,100x100,200x200,400x400&ava=1&u=asVpG0hFBqZlF7lGEJQ-lRBRTR0Txn3yPL7_N6tKnqU&cs=200x200",
+    name: "Маргарита Бугакова",
+    position: "Зам. председателя"
+  },
+  {
+    ava:"https://sun130-2.userapi.com/s/v1/if2/yOi6fYwfhU1MBNEscMLNBFZkyNM43XUdegQDaWUa0aRF9eryp_y8oUvkK0t90DgwHfbJlI8Y5nuqLf1JEJ8g1Q3m.jpg?quality=96&crop=73,0,261,261&as=50x50,100x100,200x200&ava=1&u=q7WmDyoBoRwShPW_BIl2tSEd__J86FpKOT1dAiVM5cw&cs=200x200",
+    name:"Сергей Киселев",
+    position: "Куратор"
+  },
+  {
+    ava:"https://sun130-2.userapi.com/s/v1/if2/v0QJa6ZxvmIlPQIx_qtSqECMwAQrEuIjC9Gly0nt5D1nHW9OwvkPVpbLVY3SwhHFxWZhv5_MBE5XnI0HUaSwhzVw.jpg?quality=95&crop=66,211,1602,1602&as=50x50,100x100,200x200,400x400&ava=1&u=SIT_m4gstWUe_MELLFNHqzcyhhUHnZuEN2ZDbONwANo&cs=200x200",
+    name:"Полина Васильева",
+    position: "Медиа"
+  }
+]
+
 const IndexPage = (props) => {
+  const sts = (typeof window !== 'undefined'?window.innerWidth:200) / 200
+
   return <>
     <NavBar/>
+
     <div className="h-screen flex flex-col">
       <div className="flex items-center justify-center flex-col flex-1 gap-4">
         <img src={Logo.src} className="h-40"/>
@@ -55,36 +86,45 @@ const IndexPage = (props) => {
           soft skills в команде. Прокачайте навыки в продвижении, переговорах, публичных выступлениях и управлении
           проектами. Присоединяйтесь к нам и станьте частью увлекательного научного путешествия!</p>
       </div>
-      <div className="">
-        <p className="text-3xl font-bold text-blue-vsu text-center mb-4">Наши СНО</p>
-        <Slider accessibility={false} dots={false} infinite slidesToShow={6} slidesToScroll={1} autoplay speed={5000}
+      <div className="py-4">
+        <p className="text-3xl font-bold text-blue-vsu text-center mb-6">Наши СНО</p>
+        <Slider accessibility={false} dots={false} infinite slidesToShow={sts} slidesToScroll={1} autoplay speed={5000}
                 autoplaySpeed={0} cssEase="linear">
           {faculties.map((fac, i) => {
-            return <Link href={fac.link} className="flex flex-col justify-center items-center gap-4 px-8">
-              <img src={fac.img} className="h-24 grayscale hover:grayscale-0 transition-all duration-500"
-                   alt={fac.name.replace("?"," Факультет ")}/>
+            return <Link key={i} href={fac.link} className="flex flex-col justify-center items-center gap-4 px-8">
+              <img src={fac.img} className="h-20 grayscale hover:grayscale-0 transition-all duration-500"
+                   alt={fac.name.replace("?", " Факультет ")}/>
             </Link>
           })}
         </Slider>
       </div>
     </div>
 
-
-    <div className="flex items-center justify-between p-16">
-      <div className="flex-col flex">
-        <span className="text-6xl font-bold">Мы охуенны 👍</span>
-        <span className="text-xl font-bold">Вы умрете, когда узнаете насколько</span>
+    <div className="grid grid-cols-1 lg:grid-cols-2 mt-16 p-8 gap-8" id="contacts">
+      <div className="rounded-xl flex flex-col bg-slate-100 p-4 gap-4 drop-shadow-lg">
+        <div className="relative">
+          <img src={Cover.src} className="rounded-lg"/>
+          <Link href="https://vk.com/snovsu" legacyBehavior>
+            <Button type="primary" className="w-fit gap-2 flex items-center absolute bottom-1 right-1 drop-shadow-md z-10">
+              <FontAwesomeIcon icon={faVk}/> ВКонтакте
+            </Button>
+          </Link>
+        </div>
+        <p>
+          Присоединяйтесь к нашему сообществу ВК чтобы быть в курсе всех событий!
+        </p>
       </div>
-      <img className="w-1/2 rounded-xl rotate-3"
-           src="https://sun9-59.userapi.com/impg/dtEbda9AV_L2Lg_HoB1RN0Msdkspkqf0DMqlxw/4TtHTuYB8BM.jpg?size=2560x1440&quality=95&sign=7dc660f09e37e41eebe02a67412eabcc&type=album"/>
-    </div>
-    <div className="flex items-center justify-between p-16">
-
-      <img className="w-1/2 rounded-xl rotate-3"
-           src="https://sun9-59.userapi.com/impg/dtEbda9AV_L2Lg_HoB1RN0Msdkspkqf0DMqlxw/4TtHTuYB8BM.jpg?size=2560x1440&quality=95&sign=7dc660f09e37e41eebe02a67412eabcc&type=album"/>
-      <div className="flex-col flex">
-        <span className="text-6xl font-bold">Я скопипастил</span>
-        <span className="text-xl font-bold">это раз 20 и понял что фигню сделал</span>
+      <div className="flex flex-col items-center gap-8">
+        <p className="text-blue-vsu text-xl font-bold">Организаторы</p>
+        <div className="flex gap-2 items-center">
+          {orgs.map((o,i)=>{
+            return <div className="flex flex-col items-center">
+              <img src={o.ava} className="rounded-full w-24"/>
+              <p className="text-blue-vsu text-lg">{o.name}</p>
+              <span>{o.position}</span>
+            </div>
+          })}
+        </div>
       </div>
     </div>
   </>

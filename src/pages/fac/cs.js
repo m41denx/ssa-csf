@@ -1,4 +1,4 @@
-import Cover from "@/assets/cover.jpg"
+import Cover from "@/assets/cscover.jpg"
 import NavBar from "@/components/NavBar";
 
 const IndexPage = (props) => {
