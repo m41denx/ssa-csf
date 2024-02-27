@@ -181,7 +181,7 @@ const getStaticProps = async (ctx) => {
 }
 
 const IndexPage = (props) => {
-  const sts = (typeof window !== 'undefined'?window.innerWidth:200) / 200
+  const sts = (typeof window !== 'undefined'?window.innerWidth:200) / 150
 
 
   return <>
