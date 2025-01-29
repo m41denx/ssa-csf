@@ -1,20 +1,8 @@
+# Сайт для студенческого научного объединения ВГУ
 
-https://vk.com/snovsu
+[![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Tailwind](https://img.shields.io/badge/Tailwind-black?style=for-the-badge&logo=TailwindCSS&logoColor=white)](https://tailwindcss.com/)
 
-1. Геолфак @Ingvar001 Игорь (https://vk.com/geosno)
-2. Химфак @fvdovenkov Фрол (http://vk.com/sno_chem)
-3. ФКН @kotz1k Ярослав (https://vk.com/ssa_csf)
-4. МБФ - @azurrre Юлия (https://vk.com/sno_mbf)
-5. Юрфак @ilyaa_denisov Илья (https://vk.com/law_ssc)
-6. Фармфак @IvanG0g Иван (https://vk.com/sno_farm)
-7. Матфак @andy_pozd Андрей (https://vk.com/sno_math)
-8. Физфак @Dlazovoy Дмитрий (https://vk.com/snovsuphys)
-9. Истфак @mariiaancient Мария (https://vk.com/histvsu)
-10. ПММ @Niapoll Николай (https://vk.com/sciamm)
-11. ФИПСИ @Zhen_1_7 Евгения (https://vk.com/sno_fipsi)
-12. ГГиТ @vrn_dd1 Даниил (https://vk.com/sno_ggit)
-13. ФМО @offarno Арина (https://vk.com/eurasianclubvsu)
-14. Филфак @czement Лидия (https://vk.com/sno_phil_vsu)
-15. РГФ @egorspain Егор (https://vk.com/science_rgph_vsu)
-16. Журфак @kosty21 Даниил (https://vk.com/public210972608)
-17. Экономфак @Dima_pozd Дмитрий (https://vk.com/public222719412)
+Я жалею, что так старался с логотипами. Из научки за год никто и не заметил, что деплоймент на верселе исчез.
+
+![](.github/img/img.png)
